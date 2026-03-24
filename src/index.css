@@ -1,0 +1,183 @@
+/* ═══════════════════════════════════════════════════════════════
+   CG Industrial Investment Assistant — Design System
+   Aesthetic: Refined institutional / investment-portal clarity
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── Surfaces ── */
+  --bg-deep:        #F1F4F9;
+  --bg-chat:        #F7F8FB;
+  --surface:        #FFFFFF;
+  --surface-hover:  #F4F6FA;
+  --surface-inset:  #EDF0F7;
+
+  /* ── Brand palette ── */
+  --navy-900:  #0F2440;
+  --navy-800:  #142E52;
+  --navy-700:  #1A3D6D;
+  --blue-600:  #2563EB;
+  --blue-500:  #3B82F6;
+  --blue-100:  #DBEAFE;
+  --blue-50:   #EFF6FF;
+  --teal-600:  #0D9488;
+  --teal-100:  #CCFBF1;
+  --amber-600: #D97706;
+  --amber-100: #FEF3C7;
+  --red-600:   #DC2626;
+  --red-50:    #FEF2F2;
+  --green-600: #059669;
+  --green-100: #D1FAE5;
+
+  /* ── Typography ── */
+  --text-primary:   #1A2332;
+  --text-secondary: #556478;
+  --text-muted:     #8B9BB4;
+  --text-inverse:   #FFFFFF;
+
+  /* ── Borders / Shadows ── */
+  --border:       #E0E5EE;
+  --border-light: #EDF0F7;
+  --shadow-xs:  0 1px 2px rgba(15,36,64,0.04);
+  --shadow-sm:  0 1px 3px rgba(15,36,64,0.06), 0 1px 2px rgba(15,36,64,0.04);
+  --shadow-md:  0 4px 12px rgba(15,36,64,0.07);
+  --shadow-lg:  0 12px 40px rgba(15,36,64,0.10);
+  --shadow-glow: 0 0 0 3px rgba(37,99,235,0.15);
+
+  /* ── Radius ── */
+  --r-sm:  8px;
+  --r-md:  12px;
+  --r-lg:  16px;
+  --r-xl:  20px;
+  --r-pill: 9999px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', 'Noto Sans Devanagari', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--text-primary);
+  background: var(--bg-deep);
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+#root {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* ── Selection ── */
+::selection {
+  background: var(--blue-100);
+  color: var(--navy-900);
+}
+
+/* ── Animations ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(8px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes dotPulse {
+  0%, 80%, 100% { transform: scale(0.5); opacity: 0.3; }
+  40%           { transform: scale(1.0); opacity: 1;   }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes subtleBreathe {
+  0%, 100% { opacity: 0.6; }
+  50%      { opacity: 1;   }
+}
+
+/* ── Utility ── */
+.animate-fade-up   { animation: fadeUp 0.45s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.animate-slide-in  { animation: slideIn 0.35s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.animate-fade-in   { animation: fadeIn 0.3s ease both; }
+
+/* ── Focus ring ── */
+*:focus-visible {
+  outline: 2px solid var(--blue-500);
+  outline-offset: 2px;
+}
+
+/* ── Markdown table within bot messages ── */
+.bot-msg table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+  margin: 10px 0;
+  border-radius: var(--r-sm);
+  overflow: hidden;
+}
+.bot-msg thead th {
+  background: var(--surface-inset);
+  padding: 7px 10px;
+  text-align: left;
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+  border-bottom: 2px solid var(--border);
+  white-space: nowrap;
+}
+.bot-msg tbody td {
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--border-light);
+  color: var(--text-primary);
+  vertical-align: top;
+}
+.bot-msg tbody tr:last-child td {
+  border-bottom: none;
+}
+.bot-msg tbody tr:hover td {
+  background: var(--blue-50);
+}
+
+/* ── Ensure links inside bot messages ── */
+.bot-msg a {
+  color: var(--blue-600);
+  text-decoration: none;
+  font-weight: 600;
+}
+.bot-msg a:hover {
+  text-decoration: underline;
+}
